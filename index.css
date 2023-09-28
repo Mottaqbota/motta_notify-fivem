@@ -1,112 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lexend';
   box-sizing: border-box;
-  transition: all ease 0.2s;
-}
-
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: none;
-  outline: solid 2px #0071b3;
-  box-shadow: 0px 4px 0px 2px #0071b3;
-  padding: 1rem;
-  border-radius: 12px;
-  color: #012a41;
-  background: #00a2ff;
-}
-
-button:hover {
-  cursor: pointer;
-  filter: brightness(0.9);
-}
-
-button:active {
-  box-shadow: none;
-}
-
-.clear-button {
-  font-weight: 600;
-  color: #fff;
-  background: #ff0000;
-  outline: solid 2px #b30000;
-  box-shadow: 0px 4px 0px 2px #b30000;
-}
-
-.fa-solid {
-  font-size: 26px;
-}
-
-input {
-  border: none;
-  outline: solid 2px #012a41;
-  padding: .8rem 1rem;
-  border-radius: 12px;
-  color: #012a41;
-  /* background: #00a2ff; */
-}
-
-/* input:valid {
-  outline: solid 2px #0071b3;
-} */
-
-input:invalid {
-  outline: solid 2px #ff0000;
-}
-
-input:focus {
-  outline: solid 2px #0071b3;
-  box-shadow: 0px 4px 0px 2px #0071b3;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  gap: 1rem;
-  padding: 1rem;
+  font-family: Poppins;
+  /* outline: 1px black dashed; */
+  transition: all .5s ease;
 }
 
 section {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-  border-bottom: solid 2px #012a41;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.menu {
+.fundo-img {
+  width: 100vw;
+  height: 100vh;
+}
+
+#notificationContainer {
+  position: fixed;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  justify-content: right;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 100vw;
+  height: 100vh;
+
 }
 
-.card-console {
-  width: 100%;
-  height: auto;
-}
-
-.card-activities {
+.container__notify {
+  margin-top: 20px;
+  position: relative;
+  animation: popUpNotify 1000ms ease-out;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
-  width: fit-content;
-  padding: 1rem;
-  gap: 1rem;
+  top: 50px;
+  right: 50px;
+  width: 260px;
+  height: 8vh;
+  padding: 6px 16px;
   border-radius: 12px;
-  outline: solid 2px #012a41;
-  box-shadow: 0px 4px 0px 2px #012a41;
+  box-shadow: 0px 0px 12px 0px #000000c9;
+  /* box-shadow: inset 4px 0px 26px -6px #2cdb00; */
+  color: #2cdb00;
+  backdrop-filter: blur(2px);
+  background-color: #141414da;
+}
+
+.icon {
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+  color: #2cdb00;
+  padding: 6px;
+  animation: spawnIcon infinite 1.8s;
+}
+
+.loading-c {
+  position: absolute;
+  left: 21px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1px solid #141414;
+  border-right-color: #2cdb00;
+  border-left-color: #2cdb00;
+  border-bottom-color: #2cdb00;
+  animation: loadingIcon 2s infinite linear;
+}
+
+.time-bar {
+  bottom: 2px;
+  left: 12px;
+  position: absolute;
+  color: #2cdb00;
+  background: #2cdb00;
+  width: 90%;
+  height: 1px;
+  animation: cubic-bezier(1, .9, 0.2, 0) timeBar 5s;
+}
+
+@keyframes spawnIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes popUpNotify {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes timeBar {
+  0% {
+    width: 90%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes loadingIcon {
+  to {
+    transform: rotate(360deg);
+    border-top-color: #2cdb00;
+  }
+}
+
+.text-notify {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.content-notify {
+  position: relative;
+  left: 12px;
+  font-weight: 100;
+  font-size: 14px;
+  color: white;
 }
